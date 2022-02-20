@@ -1,7 +1,8 @@
 import "./App.css";
 import { Component } from "react";
 import { CardList } from "./components/card-list/card-list.component";
-import { SearchBox} from "./components/search-box/search-box.component"
+import { SearchBox } from "./components/search-box/search-box.component"
+import { Col, Container, Row } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((users) => this.setState({ monsters: users }));
   }
-  
+
   handleChange = e => {
     return e => this.setState({ searchField: e.target.value })
   }
@@ -28,13 +29,23 @@ class App extends Component {
       monster.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
-    
+
 
     return (
       <div className="App">
-      <h1>Monter Rolodex</h1>
-        <SearchBox handleChange={this.handleChange} placeholder="search monsters"></SearchBox>
-        <CardList monsters={filteredMonsters}></CardList>
+        <Container>
+          <Row>
+            <Col>
+              <h1>Monter Rolodex</h1>
+              <SearchBox handleChange={this.handleChange} placeholder="search monsters"></SearchBox>
+            </Col>
+          </Row>
+          <Row>
+            <Col >
+              <CardList monsters={filteredMonsters}></CardList>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
