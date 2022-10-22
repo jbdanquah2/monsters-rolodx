@@ -36,7 +36,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
-              <h1>Monter Rolodex</h1>
+              <h1>Monster Rolodex</h1>
               <SearchBox handleChange={this.handleChange} placeholder="search monsters"></SearchBox>
             </Col>
           </Row>
